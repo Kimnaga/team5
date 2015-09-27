@@ -27,40 +27,36 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
 public class UserGift {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="User_seq")
-	@Column(name="GIFTID",nullable=false)
-	private int gift_id;
 	@OneToOne
-	@JoinColumn(name="USERSENTID", table = "AppUser", referencedColumnName = "APPUSERID")
-	private int user_sent_id;
+	@JoinColumn(table = "Gift", referencedColumnName = "GIFTID")
+	private int GiftId;
 	@OneToOne
-	@JoinColumn(name="USERECEIVEDID", table = "AppUser", referencedColumnName = "APPUSERID")
-	private int user_received_id;
-	//@Temporal(TemporalType.DATE)
-	@Column(name = "DATES")
-	private java.util.Date modifiedTimestamp;
-
+	@JoinColumn(name = "USERSENTID", table = "AppUser", referencedColumnName = "App_User_Id")
+	private int UserSentId;
+	@OneToOne
+	@JoinColumn(name = "USERRECEIVEDID", table = "AppUser", referencedColumnName = "App_User_Id")
+	private int UserReceivedId;
 	public int getGift_id() {
-		return gift_id;
+		return GiftId;
 	}
 	public void seGift_id(int gift_id) {
-		this.gift_id = gift_id;
+		this.GiftId = GiftId;
 	}
-	
 
 	public int getUser_sent_id() {
-		return user_sent_id;
+		return UserSentId;
 	}
 	
 	public void setUser_sent_id(int user_sent_id) {
-		this.user_sent_id = user_sent_id;
+		this.UserSentId = UserSentId;
 	}
 	
 	public int getUser_received_id() {
-		return user_received_id;
+		return UserReceivedId;
 	}
 	
 	public void setUser_received_id(int user_received_id) {
-		this.user_received_id = user_received_id;
+		this.UserReceivedId = UserReceivedId;
 	}
 
 

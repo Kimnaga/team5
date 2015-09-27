@@ -27,36 +27,34 @@ import sun.util.calendar.LocalGregorianCalendar.Date;
 public class Gift {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="User_seq")
-	@OneToOne
-	@JoinColumn(table = "UserGift", referencedColumnName = "GIFTID")
-	private int gift_id;
-	@Column(name="USERSENTID",nullable=false)
-	private int user_sent_id;
-	@Column(name="USERRECEIVEDID",nullable=false)
-	private int user_received_id;
+	@Column(name = "GIFT")
+	private int GiftId;
+	@Column(name="GIFTDESCIRPTION",nullable=false)
+	private String GiftDescription;
+	@Column(name="GiftMessage",nullable=false)
+	private String GiftMessage;
 	
 
 	public int getGift_id() {
-		return gift_id;
+		return GiftId;
 	}
 	public void seGift_id(int gift_id) {
-		this.gift_id = gift_id;
+		this.GiftId = GiftId;
 	}
-	
 
-	public int getUser_sent_id() {
-		return user_sent_id;
+	public String getGiftDescription() {
+		return GiftDescription;
 	}
 	
-	public void setUser_sent_id(int user_sent_id) {
-		this.user_sent_id = user_sent_id;
+	public void setGiftDescription(String GfitDescription) {
+		this.GiftDescription = GiftDescription;
 	}
 	
-	public int getUser_received_id() {
-		return user_received_id;
+	public String GiftMessage() {
+		return GiftDescription;
 	}
 	
-	public void setUser_received_id(int user_received_id) {
-		this.user_received_id = user_received_id;
+	public void setGiftMessage(String GiftMessage) {
+		this.GiftDescription = GiftDescription;
 	}
 }
