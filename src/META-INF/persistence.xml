@@ -8,6 +8,10 @@
 		<class>com.se452.University.University</class>
 		<class>com.se452.Message.Message</class>
 		<class>com.se452.MatchRequest.MatchRequest</class>
+		<class>com.se452.Gift.UserGift</class>
+		<class>com.se452.Gift.Gift</class>
+		<class>com.se452.Date.Date</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 			<property name="javax.persistence.jdbc.user" value="SE452_Hibernate"/>

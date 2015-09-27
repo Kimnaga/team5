@@ -44,6 +44,8 @@ public class AppUser{
 	private String email_Address;
 	@Column(name="age",nullable=false,length=320)
 	private int age;
+	
+	
 	public int getAge() {
 		return age;
 	}
