@@ -1,53 +1,47 @@
 package com.se452.University;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.se452.AppUser.AppUser;
-
-
 
 @Entity
-@Table(name="UNIVERSITY")
+@Table(name="University")
 @SequenceGenerator(name="University_seq", initialValue=1,allocationSize=1)
 public class University {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="University_seq")
-	private int UniversityId;
-	@ManyToOne
-    @JoinColumn(name="USER_ID", nullable=false)
-	private AppUser au;
-	@Column(name="University_Name",nullable=false,unique=true,length=30)
-	private String UniversityName;
+	private int universityId;
+	@Column(name="University_Name",unique=true,length=30)
+	private String universityName;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="uniId")
+	private List<UserUniversity> uuni;
 	
-	
+	public List<UserUniversity> getUuni() {
+		return uuni;
+	}
+	public void setUuni(List<UserUniversity> uuni) {
+		this.uuni = uuni;
+	}
 	public int getUniversityId() {
-		return UniversityId;
+		return universityId;
 	}
 	public void setUniversityId(int universityId) {
-		UniversityId = universityId;
-	}
-	public AppUser getAu() {
-		return au;
-	}
-	public void setAu(AppUser au) {
-		this.au = au;
+		this.universityId = universityId;
 	}
 	public String getUniversityName() {
-		return UniversityName;
+		return universityName;
 	}
 	public void setUniversityName(String universityName) {
-		UniversityName = universityName;
+		this.universityName = universityName;
 	}
-	
-	
-	
 }

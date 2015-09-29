@@ -20,17 +20,17 @@ import com.se452.Status.Status;
 
 @Entity
 @Table(name="FRIENDREQUEST")
-@SequenceGenerator(name="FriendRequest_seq", initialValue=1,allocationSize=1)
+
 public class FriendRequest {
 	
 	
 	@Id
-	@ManyToOne
-    @JoinColumn(name="USER_ID", nullable=false)
+	//@ManyToOne
+    //@JoinColumn(name="USER_ID", nullable=false)
 	private AppUser au;
 	@Id
-	@OneToOne
-	@JoinColumn(name="Friend_ID",nullable=false)
+	//@OneToOne
+	//@JoinColumn(name="Friend_ID",nullable=false)
 	private AppUser friend;
 	@Id
 	@Column(name="request_send_time",nullable=false,length=320)
@@ -39,8 +39,8 @@ public class FriendRequest {
 	@Column(name="request_update_time",nullable=false,length=320)
 	private String requestUpdateTime;
 	
-	@Column(name="request_status",nullable=false,length=320)
-	private Status requestStatus;
+	@Column(name="request_status",nullable=false)
+	private String requestStatus;
 
 	
 
@@ -76,11 +76,11 @@ public class FriendRequest {
 		this.requestUpdateTime = requestUpdateTime;
 	}
 
-	public Status getRequestStatus() {
+	public String getRequestStatus() {
 		return requestStatus;
 	}
 
-	public void setRequestStatus(Status s) {
+	public void setRequestStatus(String s) {
 		this.requestStatus = s;
 	}
 

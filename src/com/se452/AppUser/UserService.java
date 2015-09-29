@@ -26,9 +26,7 @@ public class UserService implements UserServiceInterface{
 
 	public void addUser(String userName, String userEmail, String userGender, String userPassword,int age) throws NoSuchAlgorithmException
 	{
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("SE452EclipseLink2");
-	    EntityManager entityManager = entityManagerFactory.createEntityManager();
-	    entityManager.getTransaction().begin();
+	
 	    AppUser au=new AppUser();
 	    au.setApp_user_name(userName);
 	    au.setEmail_Address(userEmail);
@@ -37,6 +35,7 @@ public class UserService implements UserServiceInterface{
 	    au.setAge(age);
 	    entityManager.persist(au);
 	    entityManager.flush();
+	  
 	   
 	}
 	
@@ -44,10 +43,8 @@ public class UserService implements UserServiceInterface{
 
 	{
 		boolean ifValid=true;
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("SE452EclipseLink2");
-	    EntityManager entityManager = entityManagerFactory.createEntityManager();
-	    entityManager.getTransaction().begin();
-	    List result=entityManager.createQuery("select au.password from AppUser au where au.app_user_name=:userName")
+		
+	    List result=entityManager.createQuery("select au.password from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 		String passwordDB=result.get(0).toString();
 		PasswordEncryption pe=new PasswordEncryption ();
@@ -66,22 +63,19 @@ public class UserService implements UserServiceInterface{
 	
 	public AppUser deleteUser(String userName)
 	{
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("SE452EclipseLink2");
-	    EntityManager entityManager = entityManagerFactory.createEntityManager();
-	    entityManager.getTransaction().begin();
-		List result = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		
+		List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 		AppUser testUser=(AppUser) result.get(0);
 		entityManager.remove(testUser);
 	    entityManager.flush();
 	    return testUser;
 	}
-	public void uppdateExistingUserEmail(String userName,String para, String value) throws NoSuchAlgorithmException
+	@Override
+	public void uppdateExistingUserInformation(String userName,String para, String value) throws NoSuchAlgorithmException
 	{
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("SE452EclipseLink2");
-	    EntityManager entityManager = entityManagerFactory.createEntityManager();
-	    entityManager.getTransaction().begin();
-	    List result = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		
+	    List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 	    AppUser testUser=(AppUser) result.get(0);
 	    if(para.toUpperCase().equals("PASSWORD"))
@@ -95,6 +89,10 @@ public class UserService implements UserServiceInterface{
 	    else if(para.toUpperCase().equals("EMAIL"))
 	    {
 	    	testUser.setEmail_Address(value);
+	    }
+	    else if(para.toUpperCase().equals("AGE"))
+	    {
+	    	testUser.setAge(Integer.parseInt(value));
 	    }
 	    entityManager.persist(testUser);
 	    entityManager.flush();

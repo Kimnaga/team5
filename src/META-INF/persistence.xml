@@ -6,15 +6,17 @@
 		<class>com.se452.Friendship.Friendship</class>
 		<class>com.se452.FriendRequest.FriendRequest</class>
 		<class>com.se452.University.University</class>
-		<class>com.se452.Message.Message</class>
+		<class>com.se452.University.UserUniversity</class>
+		<class>com.se452.Profile.Profile</class>
+		<class>com.se452.UserGift.UserGift</class>
+		<class>com.se452.UserGift.Gift</class>
+		<class>com.se452.Messages.Message</class>
+		<class>com.se452.Messages.MessageId</class>
 		<class>com.se452.MatchRequest.MatchRequest</class>
-		<class>com.se452.Gift.UserGift</class>
-		<class>com.se452.Gift.Gift</class>
-		<class>com.se452.Date.Date</class>
-		
+		<class>com.se452.Date.DateInformation</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-			<property name="javax.persistence.jdbc.user" value="SE452_Hibernate"/>
+			<property name="javax.persistence.jdbc.user" value="SE452_Oracle"/>
 			<property name="javax.persistence.jdbc.password" value="password"/>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
 			 <property name="eclipselink.logging.level" value="FINE"/>

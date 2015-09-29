@@ -7,18 +7,21 @@ public class Maintest {
 	 public static void main(String[] args) throws Exception {
 		  UserService us=new UserService();
 		  
-	//us.addUser("Tutue","xiyu332012@gmail.com", "F", "password");
-	/*boolean ifValid=UserService.verifyExistingUser("Tutue", "password");
+	us.addUser("Tutue2","xiyu332012@gmail.com", "F", "password",10);
+	
+	
+	boolean ifValid=us.verifyExistingUser("Tutue2", "password");
 	if(ifValid==true) System.out.print("Valid");
-	else  System.out.print("Not Valid");*/
+	else  System.out.print("Not Valid");
 		 
-		 //UserService.deleteUser("Emma");
-		us.uppdateExistingUserEmail("Tutu", "password", "password1");
-		boolean  ifValid=us.verifyExistingUser("Tutu", "password1");
+		 
+	us.uppdateExistingUserInformation("Tutue2", "password", "password1");
+	  ifValid=us.verifyExistingUser("Tutue2", "password");
 			if(ifValid==true) System.out.print("Valid");
-			
-			//UserService.uppdateExistingUserEmail("Emma", "email", "xiyu@eclipseLink.com");
-			//UserService.uppdateExistingUserEmail("Emma", "gender", "M");
+			else  System.out.print("Not Valid");
+			us.uppdateExistingUserInformation("Tutue2", "email", "xiyu@eclipseLink.com");
+			us.uppdateExistingUserInformation("Tutue2", "gender", "M");
+			us.uppdateExistingUserInformation("Tutue2", "age", "11");
 			
 			us.commitTransaction();
 }

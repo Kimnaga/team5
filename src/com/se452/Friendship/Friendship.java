@@ -37,13 +37,13 @@ public class Friendship {
 	private String FrindshipAddTime ;
 	
 	@Id
-	@ManyToOne
-    @JoinColumn(name="USER_ID", nullable=false)
+	//@ManyToOne
+    //@JoinColumn(name="USER_ID", nullable=false)
 	private AppUser user;
 	
 	@Id
-	@OneToOne
-	@JoinColumn(name="Friend_ID",nullable=false)
+	//@OneToOne
+	//@JoinColumn(name="Friend_ID",nullable=false)
 	private AppUser friend;
 	
 	

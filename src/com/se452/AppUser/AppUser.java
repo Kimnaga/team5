@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,9 +20,16 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
+import com.se452.Date.DateInformation;
 import com.se452.Friendship.Friendship;
 import com.se452.FriendRequest.FriendRequest;
+import com.se452.MatchRequest.MatchRequest;
+import com.se452.Messages.Message;
+import com.se452.Profile.Profile;
 import com.se452.University.University;
+import com.se452.University.UserUniversity;
+import com.se452.UserGift.UserGift;
 
 
 
@@ -35,51 +43,62 @@ public class AppUser{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="User_seq")
-	@Column(name="APPUSERID",nullable=false)
-	
-	private int app_user_id;
-	@Column(name="APPUSERNAME",nullable=false,unique=true,length=30)
-	private String app_user_name;
+	@Column(name="USERID",nullable=false)
+	private int appUserId;
+	@Column(name="USERNAME",nullable=false,unique=true,length=30)
+	private String appUserName;
 	@Column(name="USEREMAILADDRESS",nullable=false,length=320)
-	private String email_Address;
-	@Column(name="age",nullable=false,length=320)
+	private String emailAddress;
+	@Column(name="age",nullable=false)
 	private int age;
-	
-	
+	@Embedded
+	private Profile profile;
+	@Column(name="PASSWORD",nullable=false,length=40)
+	private String password;
+	@Column(name="GENDER",length=10)
+	private String gender;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="au")
+	private List<FriendRequest> friendrequest;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
+	private List<Friendship> friendship;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="userSend")
+	private List<UserGift> usergift ;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="userId")
+    private List<UserUniversity> userUniversity;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="User_Id_To")
+    private List<Message> userMessages;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="MatchMaker_Id")
+	private List<MatchRequest> matchRequest;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="mm")
+	private List<DateInformation> dateInfor;
+	public List<DateInformation> getDate() {
+		return dateInfor;
+	}
+	public void setDate(List<DateInformation> dateInfor) {
+		this.dateInfor = dateInfor;
+	}
 	public int getAge() {
 		return age;
 	}
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
 	public List<Friendship> getFriendship() {
 		return friendship;
 	}
 	public void setFriendship(List<Friendship> friendship) {
 		this.friendship = friendship;
 	}
-
-	@Column(name="PASSWORD",nullable=false,length=40)
-	private String password;
-	@Column(name="GENDER",length=10)
-	private String gender;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="au")
-	private List<FriendRequest> friendrequest;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
-	private List<Friendship> friendship;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="au")
-	private List<University> university;
- 
-
-	public List<University> getUniversity() {
-		return university;
+	public List<UserUniversity> getUserUniversity() {
+		return userUniversity;
 	}
-	public void setUniversity(List<University> university) {
-		this.university = university;
+	public void setUserUniversity(List<UserUniversity> userUniversity) {
+		this.userUniversity = userUniversity;
 	}
 	public int getApp_user_id() {
-		return app_user_id;
+		return appUserId;
 	}
 	public List<FriendRequest> getFriendrequest() {
 		return friendrequest;
@@ -88,22 +107,22 @@ public class AppUser{
 		this.friendrequest = friendrequest;
 	}
 	public void setApp_user_id(int app_user_id) {
-		this.app_user_id = app_user_id;
+		appUserId = app_user_id;
 	}
 	
 	public String getApp_user_name() {
-		return app_user_name;
+		return appUserName;
 	}
 	
 	public void setApp_user_name(String app_user_name) {
-		this.app_user_name = app_user_name;
+		appUserName = app_user_name;
 	}
 	
 	public String getEmail_Address() {
-		return email_Address;
+		return emailAddress;
 	}
 	public void setEmail_Address(String email_Address) {
-		this.email_Address = email_Address;
+		emailAddress = email_Address;
 	}
 	
 	public String getPassword() {

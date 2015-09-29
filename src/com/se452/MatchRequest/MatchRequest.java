@@ -5,40 +5,41 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.Table;
+
+import com.se452.AppUser.AppUser;
 
 @Entity 
-@IdClass(MatchRequestId.class)
+@Table(name="MatchRequest")
 public class MatchRequest {
 
-	@Id private Integer MatchMaker_Id;
-	@Id private Integer User1_Id;
-	@Id private Integer User2_Id;
+	@Id private AppUser MatchMaker_Id;
+	@Id private AppUser User1_Id;
+	@Id private AppUser User2_Id;
 	private Date Request_Time;
 	private Date Request_Accept_Time;
 	private String Request_Status;
 	private String Request_Type;
 	
-	public Integer getMatchMaker_Id() {
+	
+	public AppUser getMatchMaker_Id() {
 		return MatchMaker_Id;
 	}
-	public void setMatchMaker_Id(Integer matchMaker_Id) {
+	public void setMatchMaker_Id(AppUser matchMaker_Id) {
 		MatchMaker_Id = matchMaker_Id;
 	}
-	
-	public Integer getUser1_Id() {
+	public AppUser getUser1_Id() {
 		return User1_Id;
 	}
-	public void setUser1_Id(Integer user1_Id) {
+	public void setUser1_Id(AppUser user1_Id) {
 		User1_Id = user1_Id;
 	}
-	
-	public Integer getUser2_Id() {
+	public AppUser getUser2_Id() {
 		return User2_Id;
 	}
-	public void setUser2_Id(Integer user2_Id) {
+	public void setUser2_Id(AppUser user2_Id) {
 		User2_Id = user2_Id;
 	}
-	
 	public Date getRequest_Time() {
 		return Request_Time;
 	}

@@ -1,4 +1,4 @@
-package com.se452.Gift;
+package com.se452.UserGift;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -20,48 +20,53 @@ import javax.persistence.Temporal;
 
 import org.eclipse.persistence.internal.jpa.parsing.TemporalLiteralNode.TemporalType;
 
-import sun.util.calendar.LocalGregorianCalendar.Date;
+import com.se452.AppUser.AppUser;
+
 
 @Entity
 @Table(name="USERGIFT")
 public class UserGift {
+	
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="User_seq")
-	@Column(name="GIFTID",nullable=false)
-	private int gift_id;
-	@OneToOne
-	@JoinColumn(name="USERSENTID", table = "AppUser", referencedColumnName = "APPUSERID")
-	private int user_sent_id;
-	@OneToOne
-	@JoinColumn(name="USERECEIVEDID", table = "AppUser", referencedColumnName = "APPUSERID")
-	private int user_received_id;
+	@JoinColumn(name="GIFTID",nullable=false)
+	private Gift giftId;
+	@Id
+	//@OneToOne
+	//@JoinColumn(name="USERSENTID", table = "AppUser", referencedColumnName = "APPUSERID")
+	private AppUser userSend;
+	@Id
+	//@OneToOne
+	//@JoinColumn(name="USERSENTID", table = "AppUser", referencedColumnName = "APPUSERID")
+	private AppUser userReceived;
+	@Id
+	//@OneToOne
+	//@JoinColumn(name="USERSENTID", table = "AppUser", referencedColumnName = "APPUSERID")
 	//@Temporal(TemporalType.DATE)
-	@Column(name = "DATES")
+	//@Column(name = "DATES")
 	private java.util.Date modifiedTimestamp;
-
-	public int getGift_id() {
-		return gift_id;
+	public Gift getGiftId() {
+		return giftId;
 	}
-	public void seGift_id(int gift_id) {
-		this.gift_id = gift_id;
+	public void setGiftId(Gift giftId) {
+		this.giftId = giftId;
 	}
-	
-
-	public int getUser_sent_id() {
-		return user_sent_id;
+	public AppUser getUserSend() {
+		return userSend;
 	}
-	
-	public void setUser_sent_id(int user_sent_id) {
-		this.user_sent_id = user_sent_id;
+	public void setUserSend(AppUser userSend) {
+		this.userSend = userSend;
 	}
-	
-	public int getUser_received_id() {
-		return user_received_id;
+	public AppUser getUserReceived() {
+		return userReceived;
 	}
-	
-	public void setUser_received_id(int user_received_id) {
-		this.user_received_id = user_received_id;
+	public void setUserReceived(AppUser userReceived) {
+		this.userReceived = userReceived;
 	}
 
+
+	
+
+	
 
 }

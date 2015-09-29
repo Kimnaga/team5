@@ -1,6 +1,7 @@
-package com.se452.AppUser;
+package com.se452.Profile;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -9,10 +10,13 @@ import javax.persistence.Lob;
 public class Profile {
 	
 	@Lob
-	@Basic(fetch = FetchType.LAZY)
+	@Column(name="PICTURE")
 	private byte[] picture;
+	@Column(name="HOBBY")
 	private String hobby;
+	@Column(name="ABOUTME")
 	private String aboutMe;
+	@Column(name="IDEALPARTNER")
 	private String idealPartner;
 	
 	

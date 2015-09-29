@@ -44,7 +44,7 @@ public class FriendRequestService implements FriendRequestServiceInterface{
 		Timestamp ts=new Timestamp(time);
 		String S = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(ts);
 		fe.setRequestSendTime(S);
-		fe.setRequestStatus(Status.PENDING);
+		fe.setRequestStatus(Status.PENDING.toString());
 		fe.setRequestUpdateTime(S);
 		entityManager.persist(fe);
 		entityManager.flush();
@@ -70,12 +70,12 @@ public class FriendRequestService implements FriendRequestServiceInterface{
 		qy.setParameter("t", timeSent);
 		List list=qy.getResultList();
 		FriendRequest fr=(FriendRequest) list.get(0);
-		Status oldStatus=fr.getRequestStatus();
+		String oldStatus=fr.getRequestStatus();
 		if(!oldStatus.equals(s)){
 			long time = System.currentTimeMillis();
 			Timestamp ts=new Timestamp(time);
 			String S = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(ts);
-			fr.setRequestStatus(s);
+			fr.setRequestStatus(s.toString());
 			fr.setRequestUpdateTime(S);
 			if(S.equals("ACCEPT")){
 				FriendshipService fs=new FriendshipService();
