@@ -10,7 +10,7 @@
 		<class>com.se452.MatchRequest.MatchRequest</class>
 		<class>com.se452.Gift.UserGift</class>
 		<class>com.se452.Gift.Gift</class>
-		<class>com.se452.Date.Date</class>
+		<class>com.se452.DateSetup.DateSetup</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>

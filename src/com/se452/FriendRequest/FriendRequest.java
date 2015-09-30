@@ -23,7 +23,6 @@ import com.se452.Status.Status;
 @SequenceGenerator(name="FriendRequest_seq", initialValue=1,allocationSize=1)
 public class FriendRequest {
 	
-	
 	@Id
 	@ManyToOne
     @JoinColumn(name="USER_ID", nullable=false)

@@ -22,9 +22,7 @@ import javax.persistence.Table;
 import com.se452.Friendship.Friendship;
 import com.se452.FriendRequest.FriendRequest;
 import com.se452.University.University;
-
-
-
+import com.se452.DateSetup.DateSetup;
 
 
 
@@ -36,12 +34,14 @@ public class AppUser{
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="User_seq")
 	@Column(name="APPUSERID",nullable=false)
-	
 	private int app_user_id;
+	
 	@Column(name="APPUSERNAME",nullable=false,unique=true,length=30)
 	private String app_user_name;
+	
 	@Column(name="USEREMAILADDRESS",nullable=false,length=320)
 	private String email_Address;
+	
 	@Column(name="age",nullable=false,length=320)
 	private int age;
 	
@@ -66,11 +66,41 @@ public class AppUser{
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="au")
 	private List<FriendRequest> friendrequest;
+	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
 	private List<Friendship> friendship;
+	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="au")
 	private List<University> university;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="mm")
+	private List<DateSetup> matchMaker;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="usr1")
+	private List<DateSetup> user1;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="usr2")
+	private List<DateSetup> user2;
  
+	public List<DateSetup> getMatchMaker() {
+		return matchMaker;
+	}
+	public List<DateSetup> getUser1() {
+		return user1;
+	}
+	public List<DateSetup> getUser2() {
+		return user2;
+	}
+	
+	public void setMatchMaker( List<DateSetup> matchMaker) {
+		return matchMaker;
+	}
+	public void setUser1( List<DateSetup> user1) {
+		return user1;
+	}
+	public void setUser2( List<DateSetup> user2) {
+		return user2;
+	}
 
 	public List<University> getUniversity() {
 		return university;
@@ -115,7 +145,6 @@ public class AppUser{
 	pe.setOriginalPassword(password);
 	pe.passwordEncrypt();
 	this.password=pe.getEncryptedPassword();
-		
 	}
 
 	public String getGender() {
@@ -125,9 +154,5 @@ public class AppUser{
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	
-	
-	
 
 }

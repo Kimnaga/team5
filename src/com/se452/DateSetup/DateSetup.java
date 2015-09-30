@@ -6,16 +6,34 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Date {
+
+public class DateSetup {
 	
 	@Id
-	private User mm;
-	private User usr1;
-	private User usr2;
+	@ManyToOne 
+	@JoinColumn(name="MM_ID", nullable=false)
+	private AppUser mm;
+	
+	@ManyToOne 
+	@JoinColumn(name="USR1_ID", nullable=false)
+	private AppUser usr1;
+	
+	@ManyToOne 
+	@JoinColumn(name="USR2_ID", nullable=false)
+	private AppUser usr2;
+	
+	@Id
+	@Column(name="LOCATION",nullable=false,length=320)
 	private String location;
+
 	private Date date;
+	
 	private Time time;
+	
+	@Id
+	@Column(name="DESCRIPTION",nullable=false,length=320)
 	private String description;
+	
 	private Status status;
 	
 	public Date(User mm, User usr1, User usr2, String location, Date date, Time time, String description,
