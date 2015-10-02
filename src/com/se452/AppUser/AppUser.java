@@ -21,12 +21,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
-import com.se452.Date.DateInformation;
+
+
+import com.se452.Date.DateInfor;
 import com.se452.Friendship.Friendship;
 import com.se452.FriendRequest.FriendRequest;
 import com.se452.MatchRequest.MatchRequest;
 import com.se452.Messages.Message;
 import com.se452.Profile.Profile;
+import com.se452.UMUURequest.UMUURequest;
 import com.se452.University.University;
 import com.se452.University.UserUniversity;
 import com.se452.UserGift.UserGift;
@@ -59,6 +62,9 @@ public class AppUser{
 	private String gender;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="au")
 	private List<FriendRequest> friendrequest;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="matchMaker")
+	private List<UMUURequest> umuuRequest;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
 	private List<Friendship> friendship;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="userSend")
@@ -69,12 +75,14 @@ public class AppUser{
     private List<Message> userMessages;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="MatchMaker_Id")
 	private List<MatchRequest> matchRequest;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="mm")
-	private List<DateInformation> dateInfor;
-	public List<DateInformation> getDate() {
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="MatchMakerId")
+	private List<DateInfor> dateInfor;
+	
+	
+	public List<DateInfor> getDate() {
 		return dateInfor;
 	}
-	public void setDate(List<DateInformation> dateInfor) {
+	public void setDate(List<DateInfor> dateInfor) {
 		this.dateInfor = dateInfor;
 	}
 	public int getAge() {

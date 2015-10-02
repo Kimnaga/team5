@@ -7,9 +7,11 @@ public class Maintest {
 	 public static void main(String[] args) throws Exception {
 		  UserService us=new UserService();
 		  
-	us.addUser("Tutue2","xiyu332012@gmail.com", "F", "password",10);
-	
-	
+	us.addUser("Rey","rey@gmail.com", "M", "passwordRey",28);
+	us.addUser("Rebecca","Rebecca@gmail.com","F","passwordRebecca",24);
+	us.addUser("Emma", "Emma@gmail.com", "F", "passwordEmma", 25);
+	us.addUser("Naga", "Naga2gail.com","M","passwordNage",26);
+	/*
 	boolean ifValid=us.verifyExistingUser("Tutue2", "password");
 	if(ifValid==true) System.out.print("Valid");
 	else  System.out.print("Not Valid");
@@ -22,7 +24,7 @@ public class Maintest {
 			us.uppdateExistingUserInformation("Tutue2", "email", "xiyu@eclipseLink.com");
 			us.uppdateExistingUserInformation("Tutue2", "gender", "M");
 			us.uppdateExistingUserInformation("Tutue2", "age", "11");
-			
+			*/
 			us.commitTransaction();
 }
 	 

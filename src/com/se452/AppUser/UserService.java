@@ -105,5 +105,15 @@ public class UserService implements UserServiceInterface{
 	    entityManager.close();
 	    entityManagerFactory.close();
 	}
+
+
+
+	@Override
+	public AppUser getUser(String userName) {
+		List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
+		          .setParameter("userName", userName).getResultList();
+		AppUser testUser=(AppUser) result.get(0);
+		return testUser;
+	}
 	
 }

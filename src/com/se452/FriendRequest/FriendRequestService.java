@@ -30,10 +30,10 @@ public class FriendRequestService implements FriendRequestServiceInterface{
 	@Override
 	public void sendFriendRequest(String userName, String friendName)
 	{
-		List result = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 		AppUser user=(AppUser) result.get(0);
-		List result2 = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result2 = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", friendName).getResultList();
 		AppUser friend=(AppUser) result2.get(0);
 		
@@ -55,15 +55,15 @@ public class FriendRequestService implements FriendRequestServiceInterface{
 	public void changeFriendReqestStatus(String userName, String friendName,String timeSent,Status s)
 	{
 		
-		List result = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 		AppUser user=(AppUser) result.get(0);
 		int userId=user.getApp_user_id();
-		List result2 = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result2 = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", friendName).getResultList();
 		AppUser friend=(AppUser) result2.get(0);
 		int friendId=friend.getApp_user_id();
-		Query qy=entityManager.createQuery("select fr from FriendRequest fr where fr.au.app_user_id=:userID and"
+		Query qy=entityManager.createQuery("select fr from FriendRequest fr where fr.au.appUserId=:userID and"
 				+ " fr.friend.app_user_id=:friendID and fr.requestSendTime=:t");
 		qy.setParameter("userID", userId);
 		qy.setParameter("friendID", friendId);
@@ -94,11 +94,11 @@ public class FriendRequestService implements FriendRequestServiceInterface{
 	/*Pass Test*/
 	@Override
 	public  List<FriendRequest> viewFriendRequest(String userName) {
-		List result = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 		AppUser user=(AppUser) result.get(0);
 		int userId=user.getApp_user_id();
-		List list = entityManager.createQuery("select fr from FriendRequest fr where fr.au.app_user_id=:userID")
+		List list = entityManager.createQuery("select fr from FriendRequest fr where fr.au.appUserId=:userID")
 		          .setParameter("userID", userId).getResultList();
 		return list;
 	}
@@ -107,15 +107,15 @@ public class FriendRequestService implements FriendRequestServiceInterface{
 	public void cancelFriendRequest(String userName, String friendName,
 			String timeSent) {
 
-		List result = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", userName).getResultList();
 		AppUser user=(AppUser) result.get(0);
 		int userId=user.getApp_user_id();
-		List result2 = entityManager.createQuery("select au from AppUser au where au.app_user_name=:userName")
+		List result2 = entityManager.createQuery("select au from AppUser au where au.appUserName=:userName")
 		          .setParameter("userName", friendName).getResultList();
 		AppUser friend=(AppUser) result2.get(0);
 		int friendId=friend.getApp_user_id();
-		Query qy=entityManager.createQuery("select fr from FriendRequest fr where fr.au.app_user_id=:userID and"
+		Query qy=entityManager.createQuery("select fr from FriendRequest fr where fr.au.appUserId=:userID and"
 				+ " fr.friend.app_user_id=:friendID and fr.requestSendTime=:t");
 		qy.setParameter("userID", userId);
 		qy.setParameter("friendID", friendId);

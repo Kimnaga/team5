@@ -16,12 +16,15 @@ public class MainFriendrequest {
 	public static void main(String[] args) {
 		
 		FriendRequestService frs=new FriendRequestService();
-		//frs.sendFriendRequest("Tutu", "Emma");
+		frs.sendFriendRequest("Emma", "Rey");
+		frs.sendFriendRequest("Emma", "Rebecca");
+		frs.sendFriendRequest("Emma", "Naga");
+	
 	
 		//int userId=24;
 		//int friendId=17;
 		//String time="09/25/2015 16:22:42";
-		frs.changeFriendReqestStatus("Tutu","Emma","09/25/2015 16:22:42",Status.ACCEPT);
+		//frs.changeFriendReqestStatus("Tutu","Emma","09/25/2015 16:22:42",Status.ACCEPT);
 		
 		/*List list=frs.viewFriendRequest("Emma");
 		for(int i=0;i<list.size();i++)

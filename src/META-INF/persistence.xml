@@ -13,7 +13,8 @@
 		<class>com.se452.Messages.Message</class>
 		<class>com.se452.Messages.MessageId</class>
 		<class>com.se452.MatchRequest.MatchRequest</class>
-		<class>com.se452.Date.DateInformation</class>
+		<class>com.se452.Date.DateInfor</class>
+		<class>com.se452.UMUURequest.UMUURequest</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
 			<property name="javax.persistence.jdbc.user" value="SE452_Oracle"/>
