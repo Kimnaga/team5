@@ -20,7 +20,6 @@ import com.se452.Status.Status;
 
 @Entity
 @Table(name="FRIENDREQUEST")
-
 public class FriendRequest {
 	
 	
@@ -33,10 +32,10 @@ public class FriendRequest {
 	//@JoinColumn(name="Friend_ID",nullable=false)
 	private AppUser friend;
 	@Id
-	@Column(name="request_send_time",nullable=false,length=320)
+	@Column(name="request_send_time",nullable=false,length=100)
 	private String requestSendTime;
 	
-	@Column(name="request_update_time",nullable=false,length=320)
+	@Column(name="request_update_time",nullable=false,length=100)
 	private String requestUpdateTime;
 	
 	@Column(name="request_status",nullable=false)

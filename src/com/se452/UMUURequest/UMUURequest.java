@@ -22,12 +22,12 @@ public class UMUURequest {
 	//@JoinColumn(name="Friend_ID",nullable=false)
 	private AppUser receiveRequestUser;
 	@Id
-	@Column(name="request_send_time",nullable=false,length=320)
+	@Column(name="request_send_time",nullable=false,length=100)
 	private String requestSendTime;
 	@Id
 	private AppUser matchMaker;
 	
-	@Column(name="request_update_time",length=320)
+	@Column(name="request_update_time",length=100)
 	private String requestUpdateTime;
 	
 	@Column(name="request_status")
