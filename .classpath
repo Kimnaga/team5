@@ -6,7 +6,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/eclipselink"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mysql-jdbc"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.2"/>
+	<classpathentry kind="lib" path="E:/download/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

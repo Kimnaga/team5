@@ -4,6 +4,7 @@ public class Maintest {
 
 	public static void main(String[] args) throws Exception {
 		
+		
 		UserService us = new UserService();
 
 		us.addUser("Rey", "rey@gmail.com", "M", "passwordRey", 28);

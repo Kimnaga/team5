@@ -41,7 +41,7 @@ import com.se452.UserGift.UserGift;
 
 @Entity
 @Table(name="APPUSER")
-@SequenceGenerator(name="User_seq", initialValue=1,allocationSize=1)
+@SequenceGenerator(name="User_seq", initialValue=1,allocationSize=100)
 public class AppUser{
 	
 	@Id

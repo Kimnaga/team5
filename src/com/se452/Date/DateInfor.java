@@ -3,6 +3,7 @@ package com.se452.Date;
 import java.sql.Time;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,15 +15,23 @@ import com.se452.Status.Status;
 @Table(name="DateInfor")
 public class DateInfor {
 	
-	@Id private AppUser MatchMakerId;
-	@Id private AppUser User1_Id;
-	@Id private AppUser User2_Id;
+	@Id 
+	private AppUser MatchMakerId;
+	@Id
+	@Column (name = "user1_Id")
+	private AppUser User1Id;
+	@Id
+	@Column (name = "user2_Id")
+	private AppUser User2Id;
 
 	private String location;
+	
 	@Id
 	private String requestSendTime;
 	private String description;
 	private Status status;
+	
+	
 	public AppUser getMatchMaker_Id() {
 		return MatchMakerId;
 	}
@@ -30,16 +39,16 @@ public class DateInfor {
 		MatchMakerId = matchMaker_Id;
 	}
 	public AppUser getUser1_Id() {
-		return User1_Id;
+		return User1Id;
 	}
 	public void setUser1_Id(AppUser user1_Id) {
-		User1_Id = user1_Id;
+		User1Id = user1_Id;
 	}
 	public AppUser getUser2_Id() {
-		return User2_Id;
+		return User2Id;
 	}
 	public void setUser2_Id(AppUser user2_Id) {
-		User2_Id = user2_Id;
+		User2Id = user2_Id;
 	}
 	public String getLocation() {
 		return location;
@@ -73,5 +82,4 @@ public class DateInfor {
 		this.status = status;
 	}
 	
-
 }
