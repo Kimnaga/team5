@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import com.se452.AppUser.AppUser;
@@ -18,10 +19,10 @@ public class DateInfor {
 	@Id 
 	private AppUser MatchMakerId;
 	@Id
-	@Column (name = "user1_Id")
+	@JoinColumn (name = "user1_Id")
 	private AppUser User1Id;
 	@Id
-	@Column (name = "user2_Id")
+	@JoinColumn (name = "user2_Id")
 	private AppUser User2Id;
 
 	private String location;
